@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Routing;
+using DAL_RememberWords.Initializators;
 
 namespace RememberWords
 {
@@ -11,6 +9,7 @@ namespace RememberWords
     {
         protected void Application_Start()
         {
+            Database.SetInitializer(new WordInitializer());
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
