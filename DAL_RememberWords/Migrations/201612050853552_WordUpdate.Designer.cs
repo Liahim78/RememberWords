@@ -7,13 +7,13 @@ namespace DAL_RememberWords.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class CreateDB : IMigrationMetadata
+    public sealed partial class WordUpdate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CreateDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(WordUpdate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201612041333462_CreateDB"; }
+            get { return "201612050853552_WordUpdate"; }
         }
         
         string IMigrationMetadata.Source

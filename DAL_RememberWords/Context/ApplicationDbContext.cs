@@ -4,20 +4,20 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace DAL_RememberWords.Context
 {
-    public class WordDbContext: IdentityDbContext<User>
+    public class ApplicationDbContext: IdentityDbContext<ApplicationUser>
     {
         public DbSet<Group> Groups { get; set; }
         
         public DbSet<Word> Words { get; set; }
 
-        public WordDbContext()
+        public ApplicationDbContext()
             :base("WordContext", throwIfV1Schema: false)
         {
             
         }
-        public static WordDbContext Create()
+        public static ApplicationDbContext Create()
         {
-            return new WordDbContext();
+            return new ApplicationDbContext();
         }
     }
 

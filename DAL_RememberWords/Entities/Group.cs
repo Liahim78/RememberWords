@@ -9,7 +9,7 @@ namespace DAL_RememberWords.Entities
         public string Name { get; set; }
         
         public int UserInfo { get; set; }
-        public virtual User User { get; set; }  
+        public virtual ApplicationUser ApplicationUser { get; set; }  
 
         public virtual ICollection<Word> Words { get; set; }
     }

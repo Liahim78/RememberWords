@@ -3,7 +3,7 @@ namespace DAL_RememberWords.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CreateDB : DbMigration
+    public partial class WordUpdate : DbMigration
     {
         public override void Up()
         {
@@ -14,11 +14,11 @@ namespace DAL_RememberWords.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(),
                         UserInfo = c.Int(nullable: false),
-                        User_Id = c.String(maxLength: 128),
+                        ApplicationUser_Id = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.User_Id)
-                .Index(t => t.User_Id);
+                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUser_Id)
+                .Index(t => t.ApplicationUser_Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -85,6 +85,8 @@ namespace DAL_RememberWords.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         WordValue = c.String(),
                         GroupId = c.Int(nullable: false),
+                        Level = c.Int(nullable: false),
+                        Date = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Groups", t => t.GroupId, cascadeDelete: true)
@@ -108,7 +110,7 @@ namespace DAL_RememberWords.Migrations
             DropForeignKey("dbo.Words", "GroupId", "dbo.Groups");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Groups", "User_Id", "dbo.AspNetUsers");
+            DropForeignKey("dbo.Groups", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Words", new[] { "GroupId" });
@@ -117,7 +119,7 @@ namespace DAL_RememberWords.Migrations
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.Groups", new[] { "User_Id" });
+            DropIndex("dbo.Groups", new[] { "ApplicationUser_Id" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Words");
             DropTable("dbo.AspNetUserRoles");
