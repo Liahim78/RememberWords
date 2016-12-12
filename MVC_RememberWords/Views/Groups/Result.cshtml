@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Result";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+>@{
+     if (ViewBag.result)
+     {
+         <h2 style="color: Green">Правильно</h2>
+     }
+     else
+     {
+         <h2 style="color: Red">Не правильно</h2> 
+         <h3>Правильно так:</h3>
+         foreach (var component in ViewBag.components)
+         {
+             <p>@component</p><br/>
+         }
+     }
+    @Html.ActionLink("Далее","Start")
+}
+

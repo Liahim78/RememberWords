@@ -115,14 +115,10 @@
   <ItemGroup>
     <Compile Include="Context\ApplicationDbContext.cs" />
     <Compile Include="Context\IdentityConfig.cs" />
+    <Compile Include="Context\Initializator.cs" />
     <Compile Include="Entities\Group.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\Word.cs" />
-    <Compile Include="Migrations\201612050853552_WordUpdate.cs" />
-    <Compile Include="Migrations\201612050853552_WordUpdate.Designer.cs">
-      <DependentUpon>201612050853552_WordUpdate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AccountViewModel.cs" />
     <Compile Include="ViewModels\ManageViewModels.cs" />
@@ -130,11 +126,6 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201612050853552_WordUpdate.resx">
-      <DependentUpon>201612050853552_WordUpdate.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

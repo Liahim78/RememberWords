@@ -10,7 +10,14 @@ namespace MVC_RememberWords.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (Request.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Groups");
+            }
+            else
+            {
+                return RedirectToAction("Login","Account");
+            }
         }
 
         public ActionResult About()
