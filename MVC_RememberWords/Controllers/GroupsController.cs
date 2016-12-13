@@ -155,6 +155,7 @@ namespace MVC_RememberWords.Controllers
                     oldWord.Date = DateTime.Now.AddDays(oldWord.Level).Date;
                     oldWord.Level *= 2;
                     ViewBag.result = true;
+                    ViewBag.components = oldWord.Discription.Split(' ');
                 }
                 else
                 {

@@ -8,9 +8,13 @@
      if (ViewBag.result)
      {
          <h2 style="color: Green">Правильно</h2>
-     }
-     else
-     {
+        foreach (var component in ViewBag.components)
+        {
+            <p>@component</p><br />
+        }
+    }
+    else
+    {
          <h2 style="color: Red">Не правильно</h2> 
          <h3>Правильно так:</h3>
          foreach (var component in ViewBag.components)

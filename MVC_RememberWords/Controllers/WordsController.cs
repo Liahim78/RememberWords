@@ -67,7 +67,7 @@ namespace MVC_RememberWords.Controllers
                 word.GroupId = (int)groupId;
                 db.Words.Add(word);
                 db.SaveChanges();
-                return RedirectToAction("Index", groupId);
+                return RedirectToAction("Index",new { groupId = groupId});
             }
 
             ViewBag.GroupId = new SelectList(db.Groups, "Id", "Name", word.GroupId);
@@ -106,15 +106,16 @@ namespace MVC_RememberWords.Controllers
                 oldWord.Level = word.Level;
                 db.Entry(oldWord).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index",new {groupId = oldWord.GroupId});
             }
             ViewBag.GroupId = new SelectList(db.Groups, "Id", "Name", word.GroupId);
             return View(word);
         }
 
         // GET: Words/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id,int? groupId)
         {
+            ViewBag.groupId = groupId;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -130,12 +131,12 @@ namespace MVC_RememberWords.Controllers
         // POST: Words/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, int? groupId)
         {
             Word word = db.Words.Find(id);
             db.Words.Remove(word);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { groupId = groupId });
         }
 
         protected override void Dispose(bool disposing)

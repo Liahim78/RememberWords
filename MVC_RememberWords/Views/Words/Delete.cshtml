@@ -50,8 +50,9 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="hidden" name="groupId" value="@ViewBag.groupId"/>
+            <input type="submit" value="Delete" class="btn btn-default"/> |
+            @Html.ActionLink("Back to List", "Index", new {groupId = ViewBag.groupId})
         </div>
     }
 </div>
